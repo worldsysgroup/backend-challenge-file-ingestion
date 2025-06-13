@@ -228,9 +228,9 @@ DNI BIGINT  NOT NULL,
 
 Estado VARCHAR(10) NOT NULL,
 
-FechaIngreso DATE  NULL,
+FechaIngreso DATE NOT NULL,
 
-EsPEP BIT  NULL,
+EsPEP BIT NOT NULL,
 
 EsSujetoObligado BIT  NULL,
 
