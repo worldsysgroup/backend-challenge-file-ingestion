@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-sql-database
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      containers:
+        - name: sql-init
+          image: mcr.microsoft.com/mssql-tools
+          env:
+            - name: SA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: sqlserver-secret
+                  key: DB_PASSWORD
+          command: ["/bin/bash", "-c"]
+          args:
+            - |
+              echo "Waiting for SQL Server to be ready...";
+              until /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P "$SA_PASSWORD" -Q "SELECT 1" > /dev/null 2>&1;
+              do
+                echo "Still waiting...";
+                sleep 2
+              done
+              echo "Running init.sql script...";
+              /opt/mssql-tools/bin/sqlcmd -S sqlserver -U sa -P "$SA_PASSWORD" -i /scripts/init.sql
+          volumeMounts:
+            - name: init-script
+              mountPath: /scripts
+      restartPolicy: Never
+      volumes:
+        - name: init-script
+          configMap:
+            name: init-sql-script

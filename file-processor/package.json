@@ -1,0 +1,31 @@
+{
+  "name": "file-processor",
+  "version": "1.0.0",
+  "description": "Node.js application for processing large files",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erquiroga/file-processor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erquiroga/file-processor/issues"
+  },
+  "homepage": "https://github.com/erquiroga/file-processor#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.828.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mssql": "^11.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

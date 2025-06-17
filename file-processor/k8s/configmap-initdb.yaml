@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-sql-script
+data:
+  init.sql: |
+    CREATE DATABASE datosclientes;
+    GO
+    USE datosclientes;
+    GO
+    CREATE TABLE datosclientes (
+      id INT IDENTITY(1,1) PRIMARY KEY,
+      nombre NVARCHAR(100),
+      apellido NVARCHAR(100),
+      dni NVARCHAR(20),
+      estado NVARCHAR(20),
+      fecha_ingreso DATE,
+      es_pep BIT,
+      es_sujeto_obligado BIT
+    );
+    GO
