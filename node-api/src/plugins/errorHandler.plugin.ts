@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyError, FastifyReply, FastifyRequest } from "fastify";
 import { logger } from "../utils/logger.instance";
-import { ErrorBase } from "@app/utils/errors/error.base";
+import { ErrorBase } from "../utils/errors/error.base";
 
 export const errorHandlerPlugin = (fastify: FastifyInstance) => {
   fastify.setErrorHandler((error: FastifyError, request: FastifyRequest, reply: FastifyReply) => {
