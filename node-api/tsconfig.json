@@ -2,14 +2,14 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "NodeNext",
-    "lib": ["ES2020"],
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
     "outDir": "dist",
+    "lib": ["ES2020"],
     "rootDir": "src",
     "strict": true,
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
@@ -18,10 +18,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "baseUrl": "./src",
-    "paths": {
-      "@app/*": ["*"],
-      "@utils/*": ["utils/*"]
-    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
