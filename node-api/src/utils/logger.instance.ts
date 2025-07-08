@@ -1,10 +1,10 @@
-import { env } from "@app/config/env.config";
+import { env } from "../config/env.config";
 import pino, { LoggerOptions } from "pino";
 
 const isProduction = env.APP_ENV === "production";
 const level = env.LOG_LEVEL || (isProduction ? "info" : "debug");
 
-const options: LoggerOptions = {
+export const loggerOptions: LoggerOptions = {
   level,
   redact: ['req.headers.authorization', 'user.password'],
   serializers: {
@@ -25,4 +25,4 @@ const options: LoggerOptions = {
       }),
 };
 
-export const logger = pino(options);
+export const logger = pino(loggerOptions);
